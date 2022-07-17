@@ -1,6 +1,6 @@
 #include "stm32f10x.h"                  // Device header
 #include "gpio.h" 
-void delay_ms(int n)//ÑÓÊ±º¯Êý
+void delay_ms(int n)//å»¶æ—¶å‡½æ•°
 {
 	int i;
 	while (n--)
@@ -13,23 +13,23 @@ void delay_ms(int n)//ÑÓÊ±º¯Êý
 
 int main()
 {
-	GPIO_InitTypeDef  GPIO_InitStructure;
-	//´ò¿ªGPIO¶Ë¿ÚµÄÊ±ÖÓ
+	GPIO_InitTypeDef  GPIO_InitStructure;//åˆ›ç«‹ä¸€ä¸ªç»“æž„ä½“å˜é‡
+	//æ‰“å¼€GPIOç«¯å£çš„æ—¶é’Ÿ
 	RCC->APB2ENR |=1<<3;
-	GPIO_InitStructure.GPIO_Pin=PIN_0;
+	GPIO_InitStructure.GPIO_Pin=PIN_0;//è®¾ç½®ä¸ºPB0ä¸ºæŽ¨æŒ½è¾“å‡ºé€Ÿåº¦ä¸º50MHzæ¨¡å¼
 	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_Out_PP;
 	GPIO_Init(GPIOB,&GPIO_InitStructure);
-	GPIO_restbit(GPIOB,PIN_0);
+	GPIO_restbit(GPIOB,PIN_0);//å¤ä½å‡½æ•°ä½¿å¾—PB0å½’é›¶
 	
 	
 
-//	//ÇåÁã
+//	//æ¸…é›¶
 //	GPIOB->CRL =0;
 //	GPIOB->ODR =0;
-//	//ÅäÖÃIO¿ÚÎªÊä³ö
+//	//é…ç½®IOå£ä¸ºè¾“å‡º
 //	GPIOB->CRL |=1;
-//	//¿ØÖÆODR¼Ä´æÆ÷PB0
+//	//æŽ§åˆ¶ODRå¯„å­˜å™¨PB0
 //	GPIO_setbit(GPIOB,PIN_0);
 //	GPIO_restbit(GPIOB,PIN_0);
 //	GPIOB->ODR |=(1<<0);
@@ -39,17 +39,17 @@ int main()
 //	delay_ms(2000);
 //	GPIOB->CRL =0;
 //	GPIOB->ODR =0;
-//	//ÅäÖÃIO¿ÚÎªÊä³ö
+//	//é…ç½®IOå£ä¸ºè¾“å‡º
 //	GPIOB->CRL |=1<<4;
-//	//¿ØÖÆODR¼Ä´æÆ÷PB1
+//	//æŽ§åˆ¶ODRå¯„å­˜å™¨PB1
 //	GPIOB->ODR &=~(1<<1);
 //	delay_ms(2000);
 //	
 //	GPIOB->CRL =0;
 //	GPIOB->ODR =0;
-//	//ÅäÖÃIO¿ÚÎªÊä³ö
+//	//é…ç½®IOå£ä¸ºè¾“å‡º
 //	GPIOB->CRL |=1<<20;
-//	//¿ØÖÆODR¼Ä´æÆ÷PB1
+//	//æŽ§åˆ¶ODRå¯„å­˜å™¨PB1
 //	GPIOB->ODR &=~(1<<5);
 //	delay_ms(2000);
 
